@@ -147,7 +147,10 @@
 			 */
 			init : function( index ) {
 				if ( plugin.settings.beforeOpen ) {
-					plugin.settings.beforeOpen();
+					var result = plugin.settings.beforeOpen(elements,index);
+					if(result !== true){
+						return;
+					}
 				}
 				this.target.trigger( 'swipebox-start' );
 				$.swipebox.isOpen = true;
